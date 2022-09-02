@@ -1,0 +1,36 @@
+title Part 0 - Exercise 0.4: New note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+
+note over browser
+Payload - note: <string>
+end note
+
+note over server
+Server accesses the body of the sent form,
+creates a new note object, and appends
+it to an array "notes" with a push method
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+Browser executes the .js-file which creates an event
+handler which excutes when the readyState reaches
+state 4 and the status code is 200, and requests
+JSON data from the server, of which new note is now
+part of
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{content: "fhfh", date: "2022-09-02T01:19:19.223Z"},…]
+
+note over browser:
+Event handler fires and renders the notes on the page
+as defined in the main.js file
+end note
