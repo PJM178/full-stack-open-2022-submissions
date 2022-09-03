@@ -1,1 +1,41 @@
+title Part 0 - Exercise 0.6: New note - https://www.websequencediagrams.com/
 
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+Browser executes the .js-file which creates an event
+handler which excutes when the readyState reaches
+state 4 and the status code is 200, after which it
+requests JSON data from the server, creating and 
+populating the list items
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{content: "all write all write all write", date: "2022-09-02T21:40:19.149Z"},…]
+
+note over browser:
+Event handler fires and renders the notes on the page
+as defined in the spa.js file
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over browser
+Event handler attached to the form on page load is fired when submitted,
+adding the new note to the array, calling the redrawNotes functions which
+adds the new note to the array, and send the note to the server
+end note
+
+note over browser
+Payload - note: content of the form field and current datetime as JSON-data
+end note
+
+note over server
+Server adds the payload - content and date - to the array which
+was requested earlier
+end note
