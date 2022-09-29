@@ -1,0 +1,60 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "jättiläinen",
+  "author": "Josssrma Käyrä",
+  "url": "https//:ei-sitten",
+  "likes": 20
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "jättiläinen",
+  "author": "Josssrma Käyrä",
+  "url": "https//:ei-sitten",
+  "likes": 20,
+  "userId": "6333116aeee20fec7ba65845"
+}
+
+### new user
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+  "username": "petri",
+  "name": "Petri Tikka",
+  "password": "testi"
+}
+
+### login - petri
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "petri",
+  "password": "testi"
+}
+### login - jorma
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+  "username": "jorma",
+  "password": "testi"
+}
+
+### posting when logged in
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impvcm1hIiwiaWQiOiI2MzM0NTNkNTUyOWUzMGU4Yjc1NzQ0MjQiLCJpYXQiOjE2NjQ0Mzc1NjIsImV4cCI6MTY2NDQ0MTE2Mn0.2IE22upKil47reZXbRSJrg6uPXPt2utkCY9haKH4om4
+
+{
+  "title": "testikone jormaaaaaaaaaa",
+  "author": "ONko",
+  "url": "https//:toimiiko tämä",
+  "likes": 421
+}
